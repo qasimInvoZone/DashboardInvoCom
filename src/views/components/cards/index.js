@@ -1,12 +1,35 @@
-import { Fragment, useContext } from 'react'
+import { Fragment, useContext, useState, useEffect } from 'react'
 import { Row, Col, Card, CardHeader, CardBody, CardTitle, CardText } from 'reactstrap'
 import Leads from '../../../assets/images/icons/customIcons/leads.svg'
 import respond from '../../../assets/images/icons/customIcons/respondedLeads.svg'
 import unassigned from '../../../assets/images/icons/customIcons/un-assignedLeads.svg'
 import loggedin from '../../../assets/images/icons/customIcons/user-loggedin.svg'
 import { ThemeColors } from '@src/utility/context/ThemeColors'
+import axios from 'axios'
 
-const Cards = () => {
+const Cards = (props) => {
+  // const [leadsData, setleadsData] = useState({});
+  // //fetch token from localStorage
+  // useEffect(() => {
+  //   const fetchLeadsData = async () => {
+  //     const response = await axios.get(''); // axois call
+  //     /*
+  //       axios.post('https://example.com/postSomething', {
+  //         {body}
+  //       },
+  //       {
+  //         headers: {
+  //           Authorization: 'Bearer ' + token
+  //           'Content-Type': 'application/json'
+  //         }
+  //       })
+  //     */
+  //     const data = response.json();
+  //     setleadsData(data);
+  //   };
+  //   fetchLeadsData();
+  // }, []);
+  console.log(props);
   const context = useContext(ThemeColors)
 
   return (
@@ -26,7 +49,7 @@ const Cards = () => {
         <CardBody>
           <CardText>
           <div className="card_body">    
-          <h3>17000</h3> 
+          <h3>{props.leadsData.total_leads}</h3> 
           <div className="body_icon">
           ^
           </div>
@@ -43,14 +66,14 @@ const Cards = () => {
           
           <CardTitle  className="card_header">
             <div className="icon_container_2"><img src={respond} alt="" /></div>
-            <h5> Responded Leads </h5>
+            <h5>Responded Leads</h5>
             </CardTitle>
           
         </CardHeader>
         <CardBody>
           <CardText>
           <div className="card_body">    
-          <h3>12000</h3> 
+          <h3>{props.leadsData.responded_leads}</h3> 
           <div className="body_icon_2">
           ^
           </div>
@@ -74,7 +97,7 @@ const Cards = () => {
         <CardBody>
           <CardText>
           <div className="card_body">    
-          <h3>21000</h3> 
+          <h3>{props.leadsData.unassigned_leads}</h3> 
           <div className="body_icon">
           ^
           </div>

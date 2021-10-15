@@ -2,12 +2,31 @@
 import User1 from '../../../assets/images/avatars/12-small.png'
 import User2 from '../../../assets/images/avatars/3-small.png'
 import User3 from '../../../assets/images/avatars/10-small.png'
+import { useEffect, useState } from 'react'
+import axios from 'axios'
+import ChartjsLineChart from '../../components/charts/ChartjsLineChart'
 import Arrow from '../../../assets/images/icons/customIcons/arrowbottom.svg'
 import { Search, Link } from 'react-feather'
 import FilterSideBar from './ChatDropDowns/filterSideBar'
-// import User3 from '../../../assets/images/portrait/avatar-s-3.jpg'
-const SidebarLeft = () => {
 
+
+// import User3 from '../../../assets/images/portrait/avatar-s-3.jpg'
+const SidebarLeft = ({ renderChatParent, chats }) => {
+
+  const [user, setUser] = useState({})
+  
+  useEffect(async () => {
+    const user = JSON.parse(localStorage.getItem('user'))
+    const token = localStorage.getItem('token')
+
+    setUser(user)
+
+  }, [axios, setUser])
+
+ function renderChat(chat_id) {
+   renderChatParent(chat_id)
+ }
+  
   return  (
 
     <>
@@ -24,50 +43,22 @@ const SidebarLeft = () => {
       </div>
     </div>
         <ul>
-          <div className="all_conversations_options">
-            <p>
-              All Conversations
-            </p>
-            <FilterSideBar />
-          </div>
-          <li  className="active">
-            <div className="chatList">
-              <div className="img">
-                <img src={User1} />
+          {
+            chats?.length > 0 && chats?.map(chat => (
+              <li href="/apps/chat/messages" className="active" onClick={() => renderChat(chat._id)}>
+              <div className="chatList">
+                <div className="img">
+                  <img src={User1} />
+                </div>
+                <div className="desc">
+                  <p className="time"></p>
+                  <h5>{user?.role === 'ADMIN' || user?.role === 'SUPER_ADMIN' ?  chat?.client?.fullname : chat?.superAdmin?.fullname}</h5>
+                  <p>{ chat?.messages[chat?.messages?.length - 1]?.message }</p>
+                </div>
               </div>
-              <div className="desc">
-                <p className="time">4 day</p>
-                <h5>Lajy Ion</h5>
-                <p>Lorem ipsum  amet...</p>
-              </div>
-            </div>
-          </li>
-
-          <li className="active">
-            <div className="chatList">
-              <div className="img">
-                <img src={User2} />
-              </div>
-              <div className="desc">
-                <p className="time">4 day</p>
-                <h5>Lajy Ion</h5>
-                <p>Lorem ipsum amet...</p>
-              </div>
-            </div>
-          </li>
-          <li className="active">
-            <div className="chatList">
-              <div className="img">
-                <img src={User3} />
-              </div>
-              <div className="desc">
-                <p className="time">4 day</p>
-                <h5>Lajy Ion LAsdkjksldj ksaj</h5>
-                <p>Lorem ipsum amet...</p>
-              </div>
-            </div>
-          </li>
-
+            </li>
+            ))
+          }
         </ul>
       </div></>
   )
