@@ -5,8 +5,8 @@ import { Facebook, Twitter, Mail, GitHub } from 'react-feather'
 import InputPasswordToggle from '@components/input-password-toggle'
 import { Row, Col, CardTitle, CardText, Form, FormGroup, Label, Input, CustomInput, Button } from 'reactstrap'
 import '@styles/base/pages/page-auth.scss'
-import Bot from '../assets/images/bot.png'
-import logo from '../assets/images/icons/customIcons/logo.svg'
+import Bot from '../assets/images/loginpicture.png'
+import logo from '../assets/images/logo/invocom.png'
 import axios from 'axios'
 //import { end } from '@popperjs/core'
 
@@ -43,19 +43,19 @@ const Login = ({ history }) => {
     <div className='auth-wrapper auth-v2'>
       <Row className='auth-inner m-0'>
         
-        <Col className='d-none d-lg-flex align-items-center p-5' lg='8' sm='12'>
+        <Col className='d-none d-lg-flex align-items-center p-5' lg='6' sm='12'>
           <div className='w-100 d-lg-flex align-items-center justify-content-center px-5'>
             <img className='img-fluid' src={Bot} alt='Login' />
           </div>
         </Col>
-        <Col className='d-flex align-items-center auth-bg px-2 p-lg-5' lg='4' sm='12'>
+        <Col className='d-flex align-items-center auth-bg px-2 p-lg-5' lg='6' sm='12'>
           
-          <Col className='px-xl-2 mx-auto' sm='8' md='6' lg='12'>
-          <img src={logo} alt="invozone logo" style={{marginBottom: '10rem', height: '50px'}}/>
-            <CardTitle tag='h4' className='font-weight-bold mb-1'>
+          <Col className='px-xl-2 mx-auto' sm='8' md='6' lg='8'>
+          <img src={logo} alt="invozone logo" style={{marginBottom: '10rem', height: '50px', width:"270px"}}/>
+            <CardTitle tag='h4' className='font-weight-bold mb-0'>
               Welcome Back! 
             </CardTitle>
-            <CardText tag='h1' className='font-weigh-bold mb-1' style={{color: 'black'}}>Login to your Account</CardText>
+            <CardText tag='h1' className='font-weigh-bold mb-1' style={{color: 'black', fontWeight:"800"}}>Login to your Account</CardText>
             {
               errors.length > 0 && errors.map(error => (
                 <p> { error }</p>
@@ -82,7 +82,7 @@ const Login = ({ history }) => {
                 <CustomInput type='checkbox' className='custom-control-info' id='remember-me' label='Remember Me' />
               </FormGroup>
               <Button.Ripple onClick={() => login()} tag={Link} color='info' block>
-                Sign in
+                Login Now
               </Button.Ripple>
             </Form>
             <Link to='/'>

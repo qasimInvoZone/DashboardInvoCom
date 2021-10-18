@@ -64,7 +64,7 @@ $base-color: rgba(59, 130, 246, 1);
 }
 .main-menu.menu-light .navigation {
   @include nav-style();
-  padding-left: 3rem;
+  padding-left: 1rem;
   a:hover {
   
     color: rgb(32, 89, 155);
@@ -122,9 +122,13 @@ $base-color: rgba(59, 130, 246, 1);
 
 }
 
-.main-menu .navbar-header .navbar-brand .brand-logo img {
-    max-width: 203px;
+.brand-logo img {
+    width: 190px !important;
      height: 35px; 
+}
+
+.main-menu .navbar-header .navbar-brand .brand-logo img {
+    max-width: 200px;
 }
 
 .header-navbar .navbar-container ul.navbar-nav li a.dropdown-user-link img {
@@ -187,6 +191,7 @@ $base-color: rgba(59, 130, 246, 1);
 }
 .card_body {
   display: flex;
+  margin-left: 1rem;
 
   h3 {
     color: black;
@@ -644,9 +649,34 @@ $base-color: rgba(59, 130, 246, 1);
 
 
 
-
-
-
+.nav-item-wrapper.nav-item a {
+    justify-content: flex-start;
+    display: flex;
+    background: #fff !important;
+    box-shadow: none !important;
+    border: none !important;
+}
+.setting_live_chat {
+    display: flex;
+    align-items: center;
+    font-weight: 800;
+}	
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+    color: #3d7be8 !important;
+}
+.setting_live_chat h5 {
+    margin: 0;
+}
+.setting_live_chat h5.active {
+    margin: 0;
+	color: #3d7be8;
+}
+// .nav-item-wrapper.nav-item {
+//     border-bottom: 1px solid #d0d2d6;
+// }
+p.personal-wrapper {
+    padding-top: 2rem;
+}
 
 
 

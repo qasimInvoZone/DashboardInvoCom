@@ -195,7 +195,7 @@ const AnalyticalChart = ({
           </CardTitle>
         
 
-          <div className='d-md-flex align-items-center'>
+          <div className='d-md-flex'>
         
           <div>
           <ul className="p-0">

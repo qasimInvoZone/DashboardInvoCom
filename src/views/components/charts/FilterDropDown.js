@@ -8,7 +8,7 @@ const FilterDropDown = () => {
   return (
     <div className='demo-inline-spacing'>
       <UncontrolledButtonDropdown>
-        <DropdownToggle outline color='primary' style={{padding: '1.25rem'}}>
+        <DropdownToggle outline color='primary' style={{padding: '1.1rem'}}>
          <img src={Filter} alt="" style={{height: '12px'}}/>
         </DropdownToggle>
         <DropdownMenu>

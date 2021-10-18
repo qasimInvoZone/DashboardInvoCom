@@ -4,7 +4,7 @@
 const themeConfig = {
   app: {
     
-    appLogoImage: require('@src/assets/images/icons/customIcons/logo.svg').default
+    appLogoImage: require('@src/assets/images/logo/invocom.png').default
   },
   layout: {
     isRTL: false,

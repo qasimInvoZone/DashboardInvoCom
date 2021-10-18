@@ -83,7 +83,7 @@ import { Card, CardHeader, CardTitle, CardBody } from 'reactstrap'
         <CardTitle className="chart_title"> 
           <h2> Overview </h2> 
         </CardTitle>
-        <div className='d-sm-flex align-items-center '>
+        <div className='d-sm-flex'>
           <div>
           <ul className="p-0">
             <FilterDropDown /></ul>
