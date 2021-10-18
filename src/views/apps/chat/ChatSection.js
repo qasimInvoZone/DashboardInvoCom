@@ -1,23 +1,18 @@
 import React, { useEffect, useState } from "react"
 import User1 from "../../../assets/images/avatars/12-small.png"
 import { RefreshCw, Delete, Smile, Send } from "react-feather"
-
 const ChatSection = ({ chat, sendMessageParent }) => {
-
   const [user, setUser] = useState({})
   const [message, setMessage] = useState('')
- 
   useEffect(() => {
       const user = JSON.parse(localStorage.getItem('user'))
       setUser(user)
   }, [setUser])
-
   function sendMessage(chat_id) {
     if (message !== '') {
         sendMessageParent(chat_id, message)
     }
   }
-
   return (
     <div className="complete_right_side">
       <div>
@@ -25,8 +20,8 @@ const ChatSection = ({ chat, sendMessageParent }) => {
           <div className="image_name_header">
             <img src={User1} />
             <h3>
-                { 
-                  user.role === 'SUPER_ADMIN' || user.role === 'ADMIN'  ? chat?.client?.username : chat?.superAdmin?.username 
+                {
+                  user.role === 'SUPER_ADMIN' || user.role === 'ADMIN'  ? chat?.client?.username : chat?.superAdmin?.username
                 }
             </h3>
           </div>
@@ -66,12 +61,10 @@ const ChatSection = ({ chat, sendMessageParent }) => {
             </li>
                 ))
             }
-            
-           
           </ul>
         </div>
         <div className="right-section-bottom">
-          <input type="text" name="" placeholder="type a message..." 
+          <input type="text" name="" placeholder="type a message..."
           onChange={(e) => setMessage(e.target.value)}/>
           <div className="input_footer_emojis">
             <Smile size={32} />
@@ -85,5 +78,5 @@ const ChatSection = ({ chat, sendMessageParent }) => {
     </div>
   )
 }
-
 export default ChatSection
+

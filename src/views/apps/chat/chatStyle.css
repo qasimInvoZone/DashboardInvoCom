@@ -158,12 +158,8 @@ body{
         color: gray;
     }
     .left-section .chatList .desc h5{
-        line-height: 5px;
     margin-top: 6px;
-    max-width: 200px;
-    width: 100%;
-    padding-right: 14px;
-    
+    line-height: 5px;
     }
     .left-section .chatList .desc .time{
     position: absolute;
@@ -227,7 +223,7 @@ body{
     }
     .message ul li.msg-left small{
     position: absolute;
-    bottom: -3px;
+    bottom: -10px;
     left: 70px;
     color: #c1c1c1;
     }
@@ -280,42 +276,6 @@ body{
         display: flex;
         width: 50px;
         justify-content: space-between;
-    }
-    .chat_footer{
-        position: relative;
-    }
-    .conversation_authorization{
-        position: absolute;
-        top: 0;
-        width: 100%;
-        display: flex;
-        justify-content: space-between;
-        padding: 0.75rem;
-        background: white;
-    }
-    .con_authorize_left{
-
-        max-width: 600px;
-        width: 100%;
-    }
-    .con_authorize_left p{
-        font-size: 14px;
-        font-weight: bolder;
-        color: black;
-    }
-    .con_authorize_right{
-        display: grid;
-    }
-    .con_authorize_right p{
-       max-width: max-content;
-       padding: 0.5rem;
-       font-size: 12px;
-       font-weight: bolder;
-       color: black;    
-       cursor: pointer; 
-    }
-    .modal_class{
-        position: absolute;
     }
     .right-section-bottom{
     background: #fff;
@@ -406,15 +366,15 @@ body{
     .all_conversations_options:hover{
         background: rgba(229, 226, 226, 0.932);
     }
-/* @media (max-width: 950px){
+@media (max-width: 950px){
     .complete_right_side{
         width: 100% !important;
     }
     .left-section{
-        width: 350px !important;
+        width: 35% !important;
     }
-} */
-@media (max-width: 1200px){
+}
+@media (max-width: 750px){
    
     .complete_right_side{
         width: 100% !important;

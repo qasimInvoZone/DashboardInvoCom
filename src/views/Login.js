@@ -8,8 +8,7 @@ import '@styles/base/pages/page-auth.scss'
 import Bot from '../assets/images/bot.png'
 import logo from '../assets/images/icons/customIcons/logo.svg'
 import axios from 'axios'
-//import { end } from '@popperjs/core'
-
+import { end } from '@popperjs/core'
 const Login = ({ history }) => {
   const [skin, setSkin] = useSkin()
   const [email, setEmail] = useState('')
@@ -20,14 +19,12 @@ const Login = ({ history }) => {
   // const illustration = skin === 'dark' ? 'login-v2-dark.svg' : 'login-v2.svg',
   //   source = require(`@src/assets/images/pages/${illustration}`).default
   const login = async () => {
-    const baseUrl = 'http://stormy-sierra-19463.herokuapp.com'
+    const baseUrl = 'https://stormy-sierra-19463.herokuapp.com'
     const apiVersion = 'api/v1'
     const entity = 'user'
     const endPoint = `${baseUrl}/${apiVersion}/${entity}/login`
-
     try {
       const response = await axios.post(endPoint, { email, password })
-      console.log("response", response)
       console.log(response.status)
       if (response.status === 200) {
         localStorage.setItem('token', response.data.data.token)
@@ -35,10 +32,9 @@ const Login = ({ history }) => {
         history.push('/home')
       }
     } catch (e) {
-      console.log(e);
+      
     }
   }
-
   return (
     <div className='auth-wrapper auth-v2'>
       <Row className='auth-inner m-0'>
@@ -94,5 +90,4 @@ const Login = ({ history }) => {
     </div>
   )
 }
-
 export default Login

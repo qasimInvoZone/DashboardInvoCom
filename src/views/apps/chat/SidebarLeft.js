@@ -2,12 +2,10 @@
 import User1 from '../../../assets/images/avatars/12-small.png'
 import User2 from '../../../assets/images/avatars/3-small.png'
 import User3 from '../../../assets/images/avatars/10-small.png'
+import { Search } from 'react-feather'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 import ChartjsLineChart from '../../components/charts/ChartjsLineChart'
-import Arrow from '../../../assets/images/icons/customIcons/arrowbottom.svg'
-import { Search, Link } from 'react-feather'
-import FilterSideBar from './ChatDropDowns/filterSideBar'
 
 
 // import User3 from '../../../assets/images/portrait/avatar-s-3.jpg'
@@ -15,10 +13,10 @@ const SidebarLeft = ({ renderChatParent, chats }) => {
 
   const [user, setUser] = useState({})
   
-  useEffect(async () => {
+  useEffect(() => {
     const user = JSON.parse(localStorage.getItem('user'))
     const token = localStorage.getItem('token')
-
+    
     setUser(user)
 
   }, [axios, setUser])
@@ -27,8 +25,9 @@ const SidebarLeft = ({ renderChatParent, chats }) => {
    renderChatParent(chat_id)
  }
   
+ 
   return  (
-
+    
     <>
     <div className="left-section mCustomScrollbar" data-mcs-theme="minimal-dark">
     <div className="headLeft-section">
@@ -39,7 +38,7 @@ const SidebarLeft = ({ renderChatParent, chats }) => {
         <p>
           Recent
         </p>
-        <img src={Arrow} />
+        
       </div>
     </div>
         <ul>
@@ -52,7 +51,7 @@ const SidebarLeft = ({ renderChatParent, chats }) => {
                 </div>
                 <div className="desc">
                   <p className="time"></p>
-                  <h5>{user?.role === 'ADMIN' || user?.role === 'SUPER_ADMIN' ?  chat?.client?.fullname : chat?.superAdmin?.fullname}</h5>
+                  <h5>{ chat?.client?.fullname }</h5>
                   <p>{ chat?.messages[chat?.messages?.length - 1]?.message }</p>
                 </div>
               </div>

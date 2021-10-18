@@ -28,7 +28,6 @@ const AppChat = () => {
     const token = localStorage.getItem('token')
 
     if (user && token) {
-      console.log('hi')
       const baseUrl = 'https://stormy-sierra-19463.herokuapp.com'
       const apiVersion = 'api/v1'
       const entity = 'chat'
@@ -41,9 +40,9 @@ const AppChat = () => {
   
       try {
         const response = await axios.get(endPoint, options)
+        console.log(response.data)
         if (response.status === 200) {
-          const chats = response.data.http_response.chats
-          console.log(chats)
+          const chats = response.data.data.chats
           setChats(chats)        
         } 
       } catch (e) {
@@ -52,7 +51,7 @@ const AppChat = () => {
     }
   }, [setChats])
 
-  async function renderChat(chat_id) {
+  async function renderChat(chatId) {
     
     if (user && token) {
       const baseUrl = 'https://stormy-sierra-19463.herokuapp.com'
@@ -68,9 +67,9 @@ const AppChat = () => {
       try {
         const response = await axios.get(endPoint, options)
         if (response.status === 200) {
-          const chats = response.data.http_response.chats
+          const chats = response.data.data.chats
           setChats(chats)
-          const filteredChat = chats.filter(chat => chat._id === chat_id)
+          const filteredChat = chats.filter(chat => chat._id === chatId)
           setFilterChat(filteredChat[0])
         }
       } catch (e) {
@@ -80,13 +79,13 @@ const AppChat = () => {
 
   } 
 
-  async function sendMessage(chat_id, message) {
+  async function sendMessage(chatId, message) {
     
     if (user && token) {
       const baseUrl = 'https://stormy-sierra-19463.herokuapp.com'
       const apiVersion = 'api/v1'
       const entity = 'chat'
-      const endPoint = `${baseUrl}/${apiVersion}/${entity}`
+      const endPoint = `${baseUrl}/${apiVersion}/${entity}/message`
       const options = {
         headers: {
           Authorization: `Bearer ${token}`
@@ -94,9 +93,9 @@ const AppChat = () => {
       }
   
       try {
-        const response = await axios.post(endPoint, {message, chat_id}, options)
+        const response = await axios.post(endPoint, {message, chatId}, options)
         if (response.status === 200) {
-          renderChat(chat_id)
+          renderChat(chatId)
         }
       } catch (e) {
         
